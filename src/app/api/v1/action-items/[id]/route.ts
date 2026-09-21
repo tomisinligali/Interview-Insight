@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 
 import { prisma } from '@/lib/db/prisma';
 import { ApiError, toApiError } from '@/lib/api/errors';
+import { enforceRateLimit } from '@/lib/api/rate-limit';
 import { requireExistingTheme } from '@/lib/api/references';
 import { itemResponse } from '@/lib/api/response';
 import { readJson } from '@/lib/api/request';
@@ -23,6 +24,7 @@ async function requireActionItem(id: string) {
  */
 export async function GET(_req: NextRequest, { params }: { params: { id: string } }) {
   try {
+    await enforceRateLimit(_req);
     const actionItem = await requireActionItem(params.id);
     return itemResponse(actionItem);
   } catch (error) {
@@ -36,6 +38,7 @@ export async function GET(_req: NextRequest, { params }: { params: { id: string 
  */
 export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
   try {
+    await enforceRateLimit(req);
     const existing = await requireActionItem(params.id);
 
     const body = await readJson(req);
@@ -62,6 +65,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
  */
 export async function DELETE(_req: NextRequest, { params }: { params: { id: string } }) {
   try {
+    await enforceRateLimit(_req);
     const existing = await requireActionItem(params.id);
 
     await prisma.actionItem.delete({ where: { id: existing.id } });

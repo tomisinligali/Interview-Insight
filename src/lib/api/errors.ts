@@ -10,7 +10,8 @@ export class ApiError extends Error {
   constructor(
     public readonly status: number,
     public readonly code: string,
-    message: string
+    message: string,
+    public readonly headers?: Record<string, string>
   ) {
     super(message);
     this.name = 'ApiError';
@@ -18,8 +19,13 @@ export class ApiError extends Error {
 }
 
 /** Consistent error envelope: `{ error: { code, message } }`. */
-export function errorResponse(status: number, code: string, message: string): NextResponse {
-  return NextResponse.json({ error: { code, message } }, { status });
+export function errorResponse(
+  status: number,
+  code: string,
+  message: string,
+  headers?: Record<string, string>
+): NextResponse {
+  return NextResponse.json({ error: { code, message } }, { status, headers });
 }
 
 /**
@@ -29,7 +35,7 @@ export function errorResponse(status: number, code: string, message: string): Ne
  */
 export function toApiError(error: unknown): NextResponse {
   if (error instanceof ApiError) {
-    return errorResponse(error.status, error.code, error.message);
+    return errorResponse(error.status, error.code, error.message, error.headers);
   }
 
   if (error instanceof ZodError) {

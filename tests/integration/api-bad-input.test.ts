@@ -21,12 +21,17 @@ import { setTimeout as delay } from 'node:timers/promises';
 const PORT = 3199;
 const BASE = `http://127.0.0.1:${PORT}/api/v1`;
 const READY_TIMEOUT_MS = 120_000;
+/** Unique per-run IP so this suite never trips the API rate limiter. */
+const RUN_IP = `198.51.100.${Math.floor(Math.random() * 200) + 1}`;
 
 let server: ChildProcess | null = null;
 
 /** Performs an API request and returns status + parsed body (or null). */
 async function api(path: string, init?: RequestInit) {
-  const res = await fetch(`${BASE}${path}`, init);
+  const res = await fetch(`${BASE}${path}`, {
+    ...init,
+    headers: { ...(init?.headers ?? {}), 'x-forwarded-for': RUN_IP },
+  });
   const body = await res.json().catch(() => null);
   return { status: res.status, body };
 }
@@ -57,7 +62,7 @@ before(async () => {
       throw new Error(`next dev exited early with code ${server.exitCode}`);
     }
     try {
-      const res = await fetch(`${BASE}/transcripts?limit=1`);
+      const res = await fetch(`${BASE}/transcripts?limit=1`, { headers: { 'x-forwarded-for': RUN_IP } });
       if (res.status === 200) break;
     } catch {
       // server not up yet

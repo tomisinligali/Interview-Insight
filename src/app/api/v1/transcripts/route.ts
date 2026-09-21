@@ -3,6 +3,7 @@ import { Prisma, TranscriptSourceType } from '@prisma/client';
 
 import { prisma } from '@/lib/db/prisma';
 import { ApiError, toApiError } from '@/lib/api/errors';
+import { enforceRateLimit } from '@/lib/api/rate-limit';
 import { itemResponse, listResponse, listResult } from '@/lib/api/response';
 import { parseEnumParam, parseOrder, parsePageParams, parseSortField, readJson } from '@/lib/api/request';
 import { transcriptCreateSchema, MAX_TRANSCRIPT_WORDS } from '@/lib/validation/resource-schemas';
@@ -17,6 +18,7 @@ export const dynamic = 'force-dynamic';
  */
 export async function GET(req: NextRequest) {
   try {
+    await enforceRateLimit(req);
     const sp = req.nextUrl.searchParams;
     const { limit, offset } = parsePageParams(sp);
     const sort = parseSortField(sp, ['title', 'createdAt', 'interviewDate', 'wordCount'], 'createdAt');
@@ -58,6 +60,7 @@ export async function GET(req: NextRequest) {
  */
 export async function POST(req: NextRequest) {
   try {
+    await enforceRateLimit(req);
     const body = await readJson(req);
     const input = transcriptCreateSchema.parse(body);
 

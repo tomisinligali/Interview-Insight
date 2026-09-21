@@ -3,6 +3,7 @@ import { Prisma, SubscriptionTier } from '@prisma/client';
 
 import { prisma } from '@/lib/db/prisma';
 import { toApiError } from '@/lib/api/errors';
+import { enforceRateLimit } from '@/lib/api/rate-limit';
 import { requireExistingOrganization } from '@/lib/api/references';
 import { userPublicSelect } from '@/lib/api/projections';
 import { itemResponse, listResponse, listResult } from '@/lib/api/response';
@@ -19,6 +20,7 @@ export const dynamic = 'force-dynamic';
  */
 export async function GET(req: NextRequest) {
   try {
+    await enforceRateLimit(req);
     const sp = req.nextUrl.searchParams;
     const { limit, offset } = parsePageParams(sp);
     const sort = parseSortField(sp, ['email', 'createdAt', 'subscriptionTier'], 'createdAt');
@@ -59,6 +61,7 @@ export async function GET(req: NextRequest) {
  */
 export async function POST(req: NextRequest) {
   try {
+    await enforceRateLimit(req);
     const body = await readJson(req);
     const input = userCreateSchema.parse(body);
 

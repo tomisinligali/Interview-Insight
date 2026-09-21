@@ -3,6 +3,7 @@ import { Prisma } from '@prisma/client';
 
 import { prisma } from '@/lib/db/prisma';
 import { ApiError, toApiError } from '@/lib/api/errors';
+import { enforceRateLimit } from '@/lib/api/rate-limit';
 import { requireExistingTranscript } from '@/lib/api/references';
 import { itemResponse, listResponse, listResult } from '@/lib/api/response';
 import { parseBooleanParam, parseOrder, parsePageParams, parseSortField, readJson } from '@/lib/api/request';
@@ -17,6 +18,7 @@ export const dynamic = 'force-dynamic';
  */
 export async function GET(req: NextRequest) {
   try {
+    await enforceRateLimit(req);
     const sp = req.nextUrl.searchParams;
     const { limit, offset } = parsePageParams(sp);
     const sort = parseSortField(sp, ['id', 'transcriptId', 'editedAt'], 'transcriptId');
@@ -54,6 +56,7 @@ export async function GET(req: NextRequest) {
  */
 export async function POST(req: NextRequest) {
   try {
+    await enforceRateLimit(req);
     const body = await readJson(req);
     const input = summaryCreateSchema.parse(body);
 

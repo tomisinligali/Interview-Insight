@@ -3,6 +3,7 @@ import { Prisma } from '@prisma/client';
 
 import { prisma } from '@/lib/db/prisma';
 import { ApiError, toApiError } from '@/lib/api/errors';
+import { enforceRateLimit } from '@/lib/api/rate-limit';
 import { itemResponse } from '@/lib/api/response';
 import { readJson } from '@/lib/api/request';
 import { MAX_TRANSCRIPT_WORDS, transcriptUpdateSchema } from '@/lib/validation/resource-schemas';
@@ -27,6 +28,7 @@ async function requireTranscript(id: string) {
  */
 export async function GET(_req: NextRequest, { params }: { params: { id: string } }) {
   try {
+    await enforceRateLimit(_req);
     const transcript = await requireTranscript(params.id);
     return itemResponse(transcript);
   } catch (error) {
@@ -41,6 +43,7 @@ export async function GET(_req: NextRequest, { params }: { params: { id: string 
  */
 export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
   try {
+    await enforceRateLimit(req);
     const existing = await requireTranscript(params.id);
 
     const body = await readJson(req);
@@ -81,6 +84,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
  */
 export async function DELETE(_req: NextRequest, { params }: { params: { id: string } }) {
   try {
+    await enforceRateLimit(_req);
     const existing = await prisma.transcript.findUnique({
       where: { id: params.id },
       select: { id: true },
