@@ -23,6 +23,10 @@ node_modules/
 .env
 .env*.local
 
+# One-time secrets (never to be committed)
+/neon-url.txt
+/.neon-url.txt
+
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
