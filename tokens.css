@@ -1,0 +1,358 @@
+/**
+ * AUTO-GENERATED DESIGN SYSTEM CSS TOKENS
+ * ----------------------------------------------------------------------------
+ * Source: design-tokens.tokens.json
+ * Generated At: 2026-09-21T13:20:05.696Z
+ *
+ * RULES OF USE:
+ * 1. Do NOT manually edit this file. Edit design-tokens.tokens.json and regenerate.
+ * 2. Use semantic --color-* variables for application UI components.
+ * 3. DO NOT use foundational --primitive-* variables directly in component styles.
+ * ----------------------------------------------------------------------------
+ */
+
+:root {
+  /* ======================================================================== */
+  /* 1. PRIMITIVE COLOURS (FOUNDATIONAL TOKENS)                               */
+  /* DO NOT use --primitive-* variables directly in component UI styling.      */
+  /* Use semantic --color-* roles defined in section 2 instead.               */
+  /* ======================================================================== */
+
+  /* Primitive Category: key colors */
+  --primitive-key-colors-primary-key-color: #7e2cde;
+  --primitive-key-colors-secondary-key-color: #bc9aec;
+  --primitive-key-colors-tertiary-key-color: #35067c;
+  --primitive-key-colors-neutral-key-color: #1e1e1e;
+  --primitive-key-colors-neutral-variant-key-color: #444444;
+  --primitive-key-colors-error-key-color: #ba0d10;
+  --primitive-key-colors-info-key-color: #0d2aba;
+  --primitive-key-colors-warning-key-color: #ba7b0d;
+  --primitive-key-colors-success-key-color: #04802e;
+
+  /* Primitive Category: primary colors */
+  --primitive-primary-colors-primary-0: #000000;
+  --primitive-primary-colors-primary-10: #18072c;
+  --primitive-primary-colors-primary-20: #300e58;
+  --primitive-primary-colors-primary-30: #481584;
+  --primitive-primary-colors-primary-40: #601cb0;
+  --primitive-primary-colors-primary-50: #7822dd;
+  --primitive-primary-colors-primary-60: #934fe3;
+  --primitive-primary-colors-primary-70: #ae7bea;
+  --primitive-primary-colors-primary-80: #c9a7f1;
+  --primitive-primary-colors-primary-90: #e4d3f8;
+  --primitive-primary-colors-primary-95: #f2e9fc;
+  --primitive-primary-colors-primary-98: #faf6fe;
+  --primitive-primary-colors-primary-99: #fcfbfe;
+  --primitive-primary-colors-primary-100: #ffffff;
+
+  /* Primitive Category: secondary colors */
+  --primitive-secondary-colors-secondary-0: #000000;
+  --primitive-secondary-colors-secondary-10: #17082b;
+  --primitive-secondary-colors-secondary-20: #2d1056;
+  --primitive-secondary-colors-secondary-30: #441881;
+  --primitive-secondary-colors-secondary-40: #5a20ac;
+  --primitive-secondary-colors-secondary-50: #7128d7;
+  --primitive-secondary-colors-secondary-60: #8d53df;
+  --primitive-secondary-colors-secondary-70: #aa7ee7;
+  --primitive-secondary-colors-secondary-80: #c6a9ef;
+  --primitive-secondary-colors-secondary-90: #e3d4f7;
+  --primitive-secondary-colors-secondary-95: #f1eafb;
+  --primitive-secondary-colors-secondary-98: #f9f6fd;
+  --primitive-secondary-colors-secondary-99: #fcfbfe;
+  --primitive-secondary-colors-secondary-100: #ffffff;
+
+  /* Primitive Category: tertiary colors */
+  --primitive-tertiary-colors-tertiary-0: #000000;
+  --primitive-tertiary-colors-tertiary-10: #150231;
+  --primitive-tertiary-colors-tertiary-20: #2a0561;
+  --primitive-tertiary-colors-tertiary-30: #3e0792;
+  --primitive-tertiary-colors-tertiary-40: #5309c3;
+  --primitive-tertiary-colors-tertiary-50: #680cf3;
+  --primitive-tertiary-colors-tertiary-60: #863cf6;
+  --primitive-tertiary-colors-tertiary-70: #a46df8;
+  --primitive-tertiary-colors-tertiary-80: #c39efa;
+  --primitive-tertiary-colors-tertiary-90: #e1cefd;
+  --primitive-tertiary-colors-tertiary-95: #f0e7fe;
+  --primitive-tertiary-colors-tertiary-98: #f9f5ff;
+  --primitive-tertiary-colors-tertiary-99: #fcfaff;
+  --primitive-tertiary-colors-tertiary-100: #ffffff;
+
+  /* Primitive Category: neutral colors */
+  --primitive-neutral-colors-neutral-0: #000000;
+  --primitive-neutral-colors-neutral-10: #1a1a1a;
+  --primitive-neutral-colors-neutral-20: #333333;
+  --primitive-neutral-colors-neutral-30: #4d4d4d;
+  --primitive-neutral-colors-neutral-40: #666666;
+  --primitive-neutral-colors-neutral-50: #808080;
+  --primitive-neutral-colors-neutral-60: #999999;
+  --primitive-neutral-colors-neutral-70: #b3b3b3;
+  --primitive-neutral-colors-neutral-80: #cccccc;
+  --primitive-neutral-colors-neutral-90: #e6e6e6;
+  --primitive-neutral-colors-neutral-95: #f2f2f2;
+  --primitive-neutral-colors-neutral-98: #fafafa;
+  --primitive-neutral-colors-neutral-99: #fcfcfc;
+  --primitive-neutral-colors-neutral-100: #ffffff;
+
+  /* Primitive Category: neutral variant colors */
+  --primitive-neutral-variant-colors-neutral-variant-0: #000000;
+  --primitive-neutral-variant-colors-neutral-variant-10: #1a1a1a;
+  --primitive-neutral-variant-colors-neutral-variant-20: #333333;
+  --primitive-neutral-variant-colors-neutral-variant-30: #4d4d4d;
+  --primitive-neutral-variant-colors-neutral-variant-40: #666666;
+  --primitive-neutral-variant-colors-neutral-variant-50: #808080;
+  --primitive-neutral-variant-colors-neutral-variant-60: #999999;
+  --primitive-neutral-variant-colors-neutral-variant-70: #b3b3b3;
+  --primitive-neutral-variant-colors-neutral-variant-80: #cccccc;
+  --primitive-neutral-variant-colors-neutral-variant-90: #e6e6e6;
+  --primitive-neutral-variant-colors-neutral-variant-95: #f2f2f2;
+  --primitive-neutral-variant-colors-neutral-variant-98: #fafafa;
+  --primitive-neutral-variant-colors-neutral-variant-99: #fcfcfc;
+  --primitive-neutral-variant-colors-neutral-variant-100: #ffffff;
+
+  /* Primitive Category: error colors */
+  --primitive-error-colors-error-0: #000000;
+  --primitive-error-colors-error-10: #300304;
+  --primitive-error-colors-error-20: #5f0708;
+  --primitive-error-colors-error-30: #8f0a0c;
+  --primitive-error-colors-error-40: #bf0d10;
+  --primitive-error-colors-error-50: #ee1114;
+  --primitive-error-colors-error-60: #f24043;
+  --primitive-error-colors-error-70: #f57072;
+  --primitive-error-colors-error-80: #f8a0a1;
+  --primitive-error-colors-error-90: #fccfd0;
+  --primitive-error-colors-error-95: #fddede;
+  --primitive-error-colors-error-98: #feecec;
+  --primitive-error-colors-error-99: #fef5f6;
+  --primitive-error-colors-error-100: #ffffff;
+
+  /* Primitive Category: info colors */
+  --primitive-info-colors-info-0: #000000;
+  --primitive-info-colors-info-10: #030b30;
+  --primitive-info-colors-info-20: #07155f;
+  --primitive-info-colors-info-30: #0a208f;
+  --primitive-info-colors-info-40: #0d2bbf;
+  --primitive-info-colors-info-50: #1136ee;
+  --primitive-info-colors-info-60: #405ef2;
+  --primitive-info-colors-info-70: #7086f5;
+  --primitive-info-colors-info-80: #a0aef8;
+  --primitive-info-colors-info-90: #cfd7fc;
+  --primitive-info-colors-info-95: #dee3fd;
+  --primitive-info-colors-info-98: #eceffe;
+  --primitive-info-colors-info-99: #f5f7fe;
+  --primitive-info-colors-info-100: #ffffff;
+
+  /* Primitive Category: warning colors */
+  --primitive-warning-colors-warning-0: #000000;
+  --primitive-warning-colors-warning-10: #301f03;
+  --primitive-warning-colors-warning-20: #5f3f07;
+  --primitive-warning-colors-warning-30: #8f5e0a;
+  --primitive-warning-colors-warning-40: #bf7e0d;
+  --primitive-warning-colors-warning-50: #ee9d11;
+  --primitive-warning-colors-warning-60: #f2b140;
+  --primitive-warning-colors-warning-70: #f5c470;
+  --primitive-warning-colors-warning-80: #f8d8a0;
+  --primitive-warning-colors-warning-90: #fcebcf;
+  --primitive-warning-colors-warning-95: #fdf1de;
+  --primitive-warning-colors-warning-98: #fef7ec;
+  --primitive-warning-colors-warning-99: #fefbf5;
+  --primitive-warning-colors-warning-100: #ffffff;
+
+  /* Primitive Category: success colors */
+  --primitive-success-colors-success-0: #000000;
+  --primitive-success-colors-success-10: #023112;
+  --primitive-success-colors-success-20: #036324;
+  --primitive-success-colors-success-30: #059435;
+  --primitive-success-colors-success-40: #06c647;
+  --primitive-success-colors-success-50: #08f759;
+  --primitive-success-colors-success-60: #39f97a;
+  --primitive-success-colors-success-70: #6bfa9b;
+  --primitive-success-colors-success-80: #9cfcbd;
+  --primitive-success-colors-success-90: #cefdde;
+  --primitive-success-colors-success-95: #dcfee8;
+  --primitive-success-colors-success-98: #ebfef2;
+  --primitive-success-colors-success-99: #f5fff8;
+  --primitive-success-colors-success-100: #ffffff;
+
+  /* ======================================================================== */
+  /* 2. SEMANTIC COLOUR ROLES (UI COMPONENT COLOURS)                          */
+  /* Apply these --color-* tokens directly to application UI elements.         */
+  /* ======================================================================== */
+  --color-primary: var(--primitive-key-colors-primary-key-color);
+  --color-on-primary: var(--primitive-primary-colors-primary-100);
+  --color-primary-container: var(--primitive-primary-colors-primary-90);
+  --color-on-primary-container: var(--primitive-primary-colors-primary-30);
+  --color-secondary: var(--primitive-secondary-colors-secondary-40);
+  --color-on-secondary: var(--primitive-secondary-colors-secondary-100);
+  --color-secondary-container: var(--primitive-secondary-colors-secondary-90);
+  --color-on-secondary-container: var(--primitive-secondary-colors-secondary-30);
+  --color-tertiary: var(--primitive-tertiary-colors-tertiary-40);
+  --color-on-tertiary: var(--primitive-tertiary-colors-tertiary-100);
+  --color-tertiary-container: var(--primitive-tertiary-colors-tertiary-90);
+  --color-on-tertiary-container: var(--primitive-tertiary-colors-tertiary-30);
+  --color-neutral: var(--primitive-key-colors-neutral-key-color);
+  --color-on-neutral: var(--primitive-neutral-colors-neutral-100);
+  --color-neutral-container: var(--primitive-neutral-colors-neutral-90);
+  --color-on-neutral-container: var(--primitive-neutral-colors-neutral-30);
+  --color-neutral-variant: var(--primitive-key-colors-neutral-variant-key-color);
+  --color-on-neutral-variant: var(--primitive-neutral-variant-colors-neutral-variant-100);
+  --color-neutral-variant-container: var(--primitive-neutral-variant-colors-neutral-variant-90);
+  --color-on-neutral-variant-container: var(--primitive-neutral-variant-colors-neutral-variant-30);
+  --color-error: var(--primitive-error-colors-error-40);
+  --color-on-error: var(--primitive-error-colors-error-100);
+  --color-error-container: var(--primitive-error-colors-error-90);
+  --color-on-error-container: var(--primitive-error-colors-error-30);
+  --color-info: var(--primitive-info-colors-info-40);
+  --color-on-info: var(--primitive-info-colors-info-100);
+  --color-info-container: var(--primitive-info-colors-info-90);
+  --color-on-info-container: var(--primitive-info-colors-info-30);
+  --color-warning: var(--primitive-warning-colors-warning-40);
+  --color-on-warning: var(--primitive-warning-colors-warning-100);
+  --color-warning-container: var(--primitive-warning-colors-warning-90);
+  --color-on-warning-container: var(--primitive-warning-colors-warning-30);
+  --color-success: var(--primitive-success-colors-success-40);
+  --color-on-success: var(--primitive-success-colors-success-100);
+  --color-success-container: var(--primitive-success-colors-success-90);
+  --color-on-success-container: var(--primitive-success-colors-success-30);
+  --color-surface: var(--primitive-neutral-colors-neutral-98);
+  --color-on-surface: var(--primitive-neutral-colors-neutral-10);
+  --color-surface-varaint: var(--primitive-neutral-colors-neutral-90);
+  --color-on-surface-varaint: var(--primitive-neutral-colors-neutral-30);
+  --color-surface-container-highest: var(--primitive-neutral-colors-neutral-90);
+  --color-surface-container-high: var(--primitive-neutral-colors-neutral-90);
+  --color-surface-container: var(--primitive-neutral-colors-neutral-95);
+  --color-surface-container-low: var(--primitive-neutral-colors-neutral-98);
+  --color-surface-container-lowest: var(--primitive-neutral-colors-neutral-100);
+  --color-inverse-surface: var(--primitive-neutral-colors-neutral-20);
+  --color-inverse-on-surface: var(--primitive-neutral-colors-neutral-95);
+  --color-surface-tint: var(--primitive-primary-colors-primary-40);
+  --color-surface-container-lowest-2: var(--primitive-neutral-colors-neutral-50);
+  --color-inverse-on-surface-2: var(--primitive-neutral-colors-neutral-95);
+
+  /* ======================================================================== */
+  /* 3. TYPOGRAPHY TOKENS                                                     */
+  /* Provides compound font shorthand properties and individual tokens.      */
+  /* ======================================================================== */
+
+  /* Typography Group: display */
+  --typography-display-large-font-family: Lora;
+  --typography-display-large-font-size: 64px;
+  --typography-display-large-font-weight: 600;
+  --typography-display-large-line-height: 96px;
+  --typography-display-large-letter-spacing: -4px;
+  --typography-display-large: 600 64px/96px Lora;
+  --typography-display-medium-font-family: Lora;
+  --typography-display-medium-font-size: 48px;
+  --typography-display-medium-font-weight: 600;
+  --typography-display-medium-line-height: 72px;
+  --typography-display-medium-letter-spacing: -3px;
+  --typography-display-medium: 600 48px/72px Lora;
+  --typography-display-small-font-family: Lora;
+  --typography-display-small-font-size: 32px;
+  --typography-display-small-font-weight: 600;
+  --typography-display-small-line-height: 48px;
+  --typography-display-small-letter-spacing: -2px;
+  --typography-display-small: 600 32px/48px Lora;
+
+  /* Typography Group: headline */
+  --typography-headline-large-font-family: 'DM Sans';
+  --typography-headline-large-font-size: 32px;
+  --typography-headline-large-font-weight: 500;
+  --typography-headline-large-line-height: 48px;
+  --typography-headline-large-letter-spacing: -1.55px;
+  --typography-headline-large: 500 32px/48px 'DM Sans';
+  --typography-headline-medium-font-family: 'DM Sans';
+  --typography-headline-medium-font-size: 28px;
+  --typography-headline-medium-font-weight: 500;
+  --typography-headline-medium-line-height: 42px;
+  --typography-headline-medium-letter-spacing: -1.35px;
+  --typography-headline-medium: 500 28px/42px 'DM Sans';
+  --typography-headline-small-font-family: 'DM Sans';
+  --typography-headline-small-font-size: 24px;
+  --typography-headline-small-font-weight: 500;
+  --typography-headline-small-line-height: 36px;
+  --typography-headline-small-letter-spacing: -1px;
+  --typography-headline-small: 500 24px/36px 'DM Sans';
+
+  /* Typography Group: title */
+  --typography-title-large-font-family: 'DM Sans';
+  --typography-title-large-font-size: 22px;
+  --typography-title-large-font-weight: 500;
+  --typography-title-large-line-height: 33px;
+  --typography-title-large-letter-spacing: -1px;
+  --typography-title-large: 500 22px/33px 'DM Sans';
+  --typography-title-medium-font-family: 'DM Sans';
+  --typography-title-medium-font-size: 16px;
+  --typography-title-medium-font-weight: 600;
+  --typography-title-medium-line-height: 24px;
+  --typography-title-medium-letter-spacing: -0.85px;
+  --typography-title-medium: 600 16px/24px 'DM Sans';
+  --typography-title-small-font-family: 'DM Sans';
+  --typography-title-small-font-size: 14px;
+  --typography-title-small-font-weight: 500;
+  --typography-title-small-line-height: 21px;
+  --typography-title-small-letter-spacing: -0.75px;
+  --typography-title-small: 500 14px/21px 'DM Sans';
+
+  /* Typography Group: body */
+  --typography-body-large-font-family: 'DM Sans';
+  --typography-body-large-font-size: 16px;
+  --typography-body-large-font-weight: 500;
+  --typography-body-large-line-height: 24px;
+  --typography-body-large-letter-spacing: -0.85px;
+  --typography-body-large: 500 16px/24px 'DM Sans';
+  --typography-body-medium-font-family: 'DM Sans';
+  --typography-body-medium-font-size: 14px;
+  --typography-body-medium-font-weight: 500;
+  --typography-body-medium-line-height: 21px;
+  --typography-body-medium-letter-spacing: -0.75px;
+  --typography-body-medium: 500 14px/21px 'DM Sans';
+  --typography-body-small-font-family: 'DM Sans';
+  --typography-body-small-font-size: 12px;
+  --typography-body-small-font-weight: 500;
+  --typography-body-small-line-height: 20px;
+  --typography-body-small-letter-spacing: -0.75px;
+  --typography-body-small: 500 12px/20px 'DM Sans';
+
+  /* Typography Group: label */
+  --typography-label-large-font-family: 'DM Sans';
+  --typography-label-large-font-size: 14px;
+  --typography-label-large-font-weight: 400;
+  --typography-label-large-line-height: 21px;
+  --typography-label-large-letter-spacing: -0.9px;
+  --typography-label-large: 400 14px/21px 'DM Sans';
+  --typography-label-medium-font-family: 'DM Sans';
+  --typography-label-medium-font-size: 12px;
+  --typography-label-medium-font-weight: 400;
+  --typography-label-medium-line-height: 20px;
+  --typography-label-medium-letter-spacing: -0.75px;
+  --typography-label-medium: 400 12px/20px 'DM Sans';
+  --typography-label-small-font-family: 'DM Sans';
+  --typography-label-small-font-size: 11px;
+  --typography-label-small-font-weight: 500;
+  --typography-label-small-line-height: 19px;
+  --typography-label-small-letter-spacing: -0.8px;
+  --typography-label-small: 500 11px/19px 'DM Sans';
+
+  /* ======================================================================== */
+  /* 4. SPACING SYSTEM TOKENS                                                 */
+  /* ======================================================================== */
+  --spacing-no-spacing: 0;
+  --spacing-extremely-small-spacing: 2px;
+  --spacing-extra-extra-samll-spacing: 4px;
+  --spacing-extra-small-spacing: 8px;
+  --spacing-medium-spacing: 12px;
+  --spacing-base-spacing: 16px;
+  --spacing-small-large-spacing: 20px;
+  --spacing-large-spacing: 24px;
+  --spacing-extra-large-spacing: 32px;
+  --spacing-extra-extra-large-spacing: 40px;
+  --spacing-very-large-spacing: 48px;
+  --spacing-extremely-large-spacing: 64px;
+
+  /* ======================================================================== */
+  /* 5. EFFECT & SHADOW TOKENS                                                */
+  /* ======================================================================== */
+  --effect-hard-shadow: 4px 6px 8px 0 #00000052;
+  --effect-medium-shadow: 2px 4px 6px 0 #00000047;
+  --effect-soft-shadow: 2px 2px 20px 0 #0000001f;
+}

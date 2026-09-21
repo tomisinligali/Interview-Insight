@@ -1,0 +1,213 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum SubscriptionTier {
+  FREE
+  PAID
+}
+
+enum JobStatus {
+  QUEUED
+  PROCESSING
+  COMPLETE
+  FAILED
+}
+
+enum JobFailureType {
+  TRANSIENT
+  DETERMINISTIC
+}
+
+enum Severity {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum Sentiment {
+  POSITIVE
+  NEUTRAL
+  NEGATIVE
+  MIXED
+}
+
+enum TranscriptSourceType {
+  PASTE
+  TXT
+  DOCX
+  SRT
+  VTT
+}
+
+enum ExportFormat {
+  PDF
+  MARKDOWN
+}
+
+enum ExportJobStatus {
+  QUEUED
+  PROCESSING
+  COMPLETE
+  FAILED
+}
+
+model User {
+  id               String           @id @default(cuid())
+  email            String           @unique
+  passwordHash     String?
+  googleId         String?          @unique
+  createdAt        DateTime         @default(now())
+  deletedAt        DateTime?
+  subscriptionTier SubscriptionTier @default(FREE)
+  stripeCustomerId String?          @unique
+
+  organizationId String?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+
+  transcripts  Transcript[]
+  usageRecords UsageRecord[]
+  exportJobs   ExportJob[]
+}
+
+model Organization {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  members   User[]
+}
+
+model Transcript {
+  id               String               @id @default(cuid())
+  userId           String
+  user             User                 @relation(fields: [userId], references: [id])
+  title            String
+  interviewDate    DateTime?
+  interviewee      String?
+  tags             String[]
+  sourceType       TranscriptSourceType
+  originalFileKey  String?
+  extractedText    String
+  wordCount        Int
+  detectedLanguage String?
+  isNonEnglish     Boolean              @default(false)
+  isLowConfidence  Boolean              @default(false)
+  createdAt        DateTime             @default(now())
+  deletedAt        DateTime?
+
+  processingJobs ProcessingJob[]
+  exportJobs     ExportJob[]
+  summary        Summary?
+  themes         Theme[]
+  painPoints     PainPoint[]
+  quotes         Quote[]
+  actionItems    ActionItem[]
+}
+
+model ProcessingJob {
+  id              String          @id @default(cuid())
+  transcriptId    String
+  transcript      Transcript      @relation(fields: [transcriptId], references: [id], onDelete: Cascade)
+  status          JobStatus       @default(QUEUED)
+  attemptCount    Int             @default(0)
+  lastError       String?
+  lastFailureType JobFailureType?
+  chunkCount      Int?
+  failedChunks    Int             @default(0)
+  claimedAt       DateTime?
+  createdAt       DateTime        @default(now())
+  startedAt       DateTime?
+  completedAt     DateTime?
+}
+
+model ExportJob {
+  id            String          @id @default(cuid())
+  transcriptId  String
+  transcript    Transcript      @relation(fields: [transcriptId], references: [id], onDelete: Cascade)
+  userId        String
+  user          User            @relation(fields: [userId], references: [id])
+  format        ExportFormat
+  status        ExportJobStatus @default(QUEUED)
+  resultFileKey String?
+  createdAt     DateTime        @default(now())
+  completedAt   DateTime?
+}
+
+model Summary {
+  id           String     @id @default(cuid())
+  transcriptId String     @unique
+  transcript   Transcript @relation(fields: [transcriptId], references: [id], onDelete: Cascade)
+  content      String
+  editedAt     DateTime?
+}
+
+model Theme {
+  id              String    @id @default(cuid())
+  transcriptId    String
+  transcript      Transcript @relation(fields: [transcriptId], references: [id], onDelete: Cascade)
+  title           String
+  description     String
+  sentiment       Sentiment
+  sentimentReason String
+  editedAt        DateTime?
+  createdAt       DateTime  @default(now())
+
+  quotes      Quote[]
+  painPoints  PainPoint[]
+  actionItems ActionItem[]
+}
+
+model PainPoint {
+  id           String     @id @default(cuid())
+  transcriptId String
+  transcript   Transcript @relation(fields: [transcriptId], references: [id], onDelete: Cascade)
+  themeId      String?
+  theme        Theme?     @relation(fields: [themeId], references: [id], onDelete: SetNull)
+  title        String
+  description  String
+  severity     Severity
+  editedAt     DateTime?
+  createdAt    DateTime   @default(now())
+}
+
+model Quote {
+  id                String     @id @default(cuid())
+  transcriptId      String
+  transcript        Transcript @relation(fields: [transcriptId], references: [id], onDelete: Cascade)
+  themeId           String?
+  theme             Theme?     @relation(fields: [themeId], references: [id], onDelete: SetNull)
+  text              String
+  speakerLabel      String?
+  sourceOffsetStart Int?
+  sourceOffsetEnd   Int?
+  wasTruncated      Boolean    @default(false)
+  editedAt          DateTime?
+  createdAt         DateTime   @default(now())
+}
+
+model ActionItem {
+  id           String     @id @default(cuid())
+  transcriptId String
+  transcript   Transcript @relation(fields: [transcriptId], references: [id], onDelete: Cascade)
+  themeId      String?
+  theme        Theme?     @relation(fields: [themeId], references: [id], onDelete: SetNull)
+  description  String
+  editedAt     DateTime?
+  createdAt    DateTime   @default(now())
+}
+
+model UsageRecord {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  periodStart     DateTime
+  periodEnd       DateTime
+  transcriptsUsed Int      @default(0)
+
+  @@unique([userId, periodStart])
+}
