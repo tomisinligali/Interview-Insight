@@ -38,7 +38,7 @@ function parseIntParam(
   clampMax: number | undefined
 ): number {
   const raw = searchParams.get(name);
-  if (raw === null || raw === '') return fallback;
+  if (raw === null) return fallback;
   if (!/^-?\d+$/.test(raw)) {
     throw new ApiError(400, 'INVALID_QUERY', `Query parameter "${name}" must be an integer.`);
   }
